@@ -40,17 +40,23 @@ function App1() {
       <BrowserRouter>
         <div>
           <div className="content">
+            <img  src={ require('./Img/logo.png') } />
             <div>
             <NavLink activeClassName="active" to="/Register">Register</NavLink>
+            
             <NavLink activeClassName="active" to="/Logout">Logout</NavLink>
             
           </div>
+          
           <div>
+            
             <Switch>
+              
               <Route exact path="/" component={App1} />
               <PublicRoute path="/login" component={Login} />
               <PrivateRoute path="/Logout" component={Logout} />
             </Switch>
+            
             </div>
           </div>
         </div>
