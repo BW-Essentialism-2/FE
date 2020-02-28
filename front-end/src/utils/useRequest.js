@@ -13,6 +13,7 @@ export const useRequest = async (url, method, isAuth, data) => {
                     method: method,
                     url: BASE_URL + url,
                     data: data
+                    
                 })
                     .then(res => returnData = res)
                 break;
