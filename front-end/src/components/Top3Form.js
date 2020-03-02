@@ -1,37 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Select } from 'antd';
 import { Input } from 'antd';
 
 const { TextArea } = Input;
 const { Option } = Select;
 
-const initialText = {
-  why: ""
+const initialComment = {
+  comment: ""
 };
 
-const Top3 = ({ selectedValues }) => {
+const Top3Form = ({ selectedValues }) => {
   console.log(selectedValues);
-  const [whyText, setWhyText] = useState(initialText);
+  const [commentText, setCommentText] = useState(initialComment);
+  const [values, setValues] = useState();
 
   const handleSubmit = e => {
     e.preventDefault();
-    useRequest(`/values/${whyText.id}`, put, true, whyText);
+    useRequest(`/api/user/:id/${values}/${commentText.id}`, put, true, commentText);
   }
 
   return(
     <div>
       <form onSubmit={handleSubmit}>
-        <Select defaultValue="CHOOSE" style={{ width: 120 }} onChange={handleChange}>
-          {state.values.map(value => (
+        <Select defaultValue="CHOOSE" style={{ width: 120 }}>
+          {values.map(value => (
             <Option key={value.id}>{value}</Option>
               ))}      
         </Select>
         <TextArea rows={4} onChange={e =>
-                    setWhyText({ ...whyText, why: e.target.value })
+                    setCommentText({ ...commentText, comment: e.target.value })
                   }
-                  value={colorToEdit.color}/>
+                  value={commentText.comment}/>
       </form>  
     </div>
   )};
 
-  export default Top3;
+  export default Top3Form;
