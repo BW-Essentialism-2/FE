@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       {/* Commented navbar out till styling is finished */}
-        {/* <NavBar/> */}
+        <NavBar/>
     </div>
   );
 }
