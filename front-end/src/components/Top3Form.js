@@ -27,10 +27,10 @@ const Top3Form = ({ selectedValues }) => {
             <Option key={value.id}>{value}</Option>
               ))}      
         </Select>
-        <TextArea rows={4} onChange={e =>
-                    setCommentText({ ...commentText, comment: e.target.value })
-                  }
-                  value={commentText.comment}/>
+        <TextArea 
+          rows={4} 
+          onChange={e => setCommentText({ ...commentText, comment: e.target.value })}
+          value={commentText.comment}/>
       </form>  
     </div>
   )};
