@@ -36,3 +36,35 @@
     transform: rotate(360deg);
   }
 }
+
+.nav {
+  margin: 2%;
+}
+.nav nav {
+  display: flex;
+  width: 100%;
+  height: 100px;
+}
+.nav img {
+  height: 75px;
+  margin-left: 10%;
+  align-self: center;
+}
+.leftCont {
+  width: 50%;
+  display: flex;
+}
+.links {
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+  width: 50%;
+  height: 100%;
+}
+.links a {
+  height: 20px;
+  color: black;
+  align-self: center;
+  text-decoration: none;
+  font-weight: 500;
+}
