@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const NavBar = () => {
+const NavBar = ({isLoggedIn}) => {
     return (
         <div className="nav">
             <nav>
@@ -9,8 +9,9 @@ const NavBar = () => {
                     <img src={require("../logo.png")} alt="essentialism logo"/>
                 </div>
                 <div className="links">
-                    <Link>About</Link>
-                    <Link>Log In</Link>
+                    <Link to="/about">About</Link>
+                    {isLoggedIn ? <Link>Log In</Link> : 
+                    <Link to="/register">Register</Link>}
                 </div>
             </nav>
         </div>
