@@ -38,7 +38,7 @@ Design - Planning
   - Register
   - Choose values
   - List projects
-  - Dashboard(edit/delete values and projects)
+  - Dashboard (edit/delete values and projects)
   Returning User
   - Login
   - Dashboard
