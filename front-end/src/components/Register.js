@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import {useRequest} from '../utils/useRequest'
 
+import { useHistory } from 'react-router-dom'
+
 const Register = () => {
+    const history = useHistory()
     const [credentials, setCredentials] = useState({
         username: "",
         password: ""
@@ -16,6 +19,7 @@ const Register = () => {
             .then(res => {
                 localStorage.setItem('token', res.data.token)
                 localStorage.setItem('user_id', res.data.user.id)
+                history.push('/register/values')
             })
             .catch(err => console.log(err))
 

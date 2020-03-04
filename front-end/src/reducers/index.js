@@ -1,8 +1,6 @@
-const initialState = []
+import { combineReducers } from 'redux'
+import RegisterReducer from './RegisterReducer'
 
-export const reducer = (state = initialState, action) => {
-    switch(action.type) {
-        default: 
-            return state;
-    }
-}
+export default combineReducers({
+    register: RegisterReducer
+})

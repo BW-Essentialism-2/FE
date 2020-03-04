@@ -3,6 +3,7 @@ import './App.css';
 import NavBar from './components/NavBar';
 import {Route} from 'react-router-dom'
 import Register from './components/Register';
+import AllValues from './components/AllValues';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -17,7 +18,8 @@ function App() {
       {/* Commented navbar out till styling is finished */}
         <NavBar isLoggedIn={isLoggedIn}/>
       {/* ROUTING */}
-      <Route path="/register" component={Register} />
+      <Route exact path="/register" component={Register} />
+      <Route path = "/register/values" component={AllValues}/>
     </div>
   );
 }
