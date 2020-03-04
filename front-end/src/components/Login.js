@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from "react";
+import React, { useState } from "react";
 
 const Login = (props) => {
 
@@ -24,7 +24,7 @@ const Login = (props) => {
       })
       .catch(err => {
         localStorage.removeItem("token");
-        console.log("invalid login: ", err);
+        console.log("Invalid login: ", err);
       });
   };
 
@@ -34,13 +34,13 @@ const Login = (props) => {
         <input 
           type="text"
           name="username"
-          value={username}
+          value={user.username}
           onChange={handleChanges}
         />
         <input 
           type="password"
           name="password"
-          value={password}
+          value={user.password}
           onChange={handleChanges}
         />
         <button>Log In</button>
