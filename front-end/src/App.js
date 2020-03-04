@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import NavBar from './components/NavBar';
+import {Route} from 'react-router-dom'
+import Register from './components/Register';
+import AllValues from './components/AllValues';
+import PrivateRoute from './utils/PrivateRoute'
 
 function App() {
-
+  const [isToken, setIsToken] = useState(false)
+  const toggleToken = bool => setIsToken(bool);
   return (
     <div className="App">
-
-      {/* Commented navbar out till styling is finished */}
-        <NavBar/>
+    
+      <NavBar token={isToken} setToken={setIsToken}/>
+      {/* ROUTING */}
+      <Route exact path="/register" render={() => <Register setToken={toggleToken}/>} />
+      <PrivateRoute path = "/register/values" component={AllValues}/>
     </div>
   );
 }

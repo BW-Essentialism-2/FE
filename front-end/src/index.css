@@ -61,6 +61,7 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
 #root > div > img {
   display:inline-block;
    width:50vw;
