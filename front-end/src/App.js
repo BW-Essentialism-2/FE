@@ -5,7 +5,8 @@ import {Route} from 'react-router-dom'
 import Register from './components/Register';
 import Login from './components/Login';
 import AllValues from './components/AllValues';
-import PrivateRoute from './utils/PrivateRoute'
+import Dashboard from './components/Dashboard';
+import PrivateRoute from './utils/PrivateRoute';
 
 function App() {
   const [isToken, setIsToken] = useState(false)
@@ -16,9 +17,11 @@ function App() {
       <NavBar token={isToken} setToken={setIsToken}/>
       {/* ROUTING */}
       <Route exact path="/register" render={() => <Register setToken={toggleToken}/>} />
-      <Route exact path="/login" render={() => <Login setToken={toggleToken}/>} />
+      <Route exact path="/login" render={() => <Login />} />
 
       <PrivateRoute path = "/register/values" component={AllValues}/>
+      <PrivateRoute path = "/user/:id/dashboard" component={Dashboard}/>
+
     </div>
   );
 }
