@@ -1,9 +1,6 @@
 import React, { useState, useReducer } from "react";
 
-// import { initialState, reducer } from "../reducers";
-
 const Login = (props) => {
-  // const [state, dispatch] = useReducer(reducer, initialState);
 
   const [user, setUser] = useState({
     username: '',
@@ -29,7 +26,6 @@ const Login = (props) => {
         localStorage.removeItem("token");
         console.log("invalid login: ", err);
       });
-    // dispatch({ type: "LOGIN", payload:  });
   };
 
   return (
