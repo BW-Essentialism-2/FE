@@ -3,7 +3,7 @@ import {useRequest} from '../utils/useRequest'
 
 import { useHistory } from 'react-router-dom'
 
-const Register = () => {
+const Register = ({setToken}) => {
     const history = useHistory()
     const [credentials, setCredentials] = useState({
         username: "",
@@ -18,6 +18,7 @@ const Register = () => {
         useRequest('/api/auth/register', 'post', false, credentials)
             .then(res => {
                 localStorage.setItem('token', res.data.token)
+                setToken(true)
                 localStorage.setItem('user_id', res.data.user.id)
                 history.push('/register/values')
             })
@@ -27,6 +28,7 @@ const Register = () => {
     return (
         <div>
             <form onSubmit={e => HandleSubmit(e)}>
+                {console.log(setToken)}
                 <input name="username" placeholder="Username" value={credentials.username} onChange={e => handleChanges(e)}/>
                 <input type="password" name="password" placeholder="Password" value={credentials.password} onChange={e => handleChanges(e)}/>
                 <button type="submit">Register</button>

@@ -4,22 +4,18 @@ import NavBar from './components/NavBar';
 import {Route} from 'react-router-dom'
 import Register from './components/Register';
 import AllValues from './components/AllValues';
+import PrivateRoute from './utils/PrivateRoute'
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-  useEffect(() => {
-    if(localStorage.getItem("token")) {
-      setIsLoggedIn(true)
-    }
-  }, [isLoggedIn])
+  const [isToken, setIsToken] = useState(false)
+  const toggleToken = bool => setIsToken(bool);
   return (
     <div className="App">
-      
-      {/* Commented navbar out till styling is finished */}
-        <NavBar isLoggedIn={isLoggedIn}/>
+    
+      <NavBar token={isToken} setToken={setIsToken}/>
       {/* ROUTING */}
-      <Route exact path="/register" component={Register} />
-      <Route path = "/register/values" component={AllValues}/>
+      <Route exact path="/register" render={() => <Register setToken={toggleToken}/>} />
+      <PrivateRoute path = "/register/values" component={AllValues}/>
     </div>
   );
 }
