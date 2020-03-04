@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { axiosWithAuth } from 'front-end/src/utils/axiosWithAuth.js';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const Login = (props) => {
 
