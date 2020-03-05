@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
+import { axiosWithAuth } from '../utils/axiosWithAuth'
+import { updateValue } from '../actions/Register'
 const Top3 = () => {
     const dispatch = useDispatch()
     const state = useSelector(state => state.register)
@@ -14,6 +15,21 @@ const Top3 = () => {
 
     const handleSelectChange = e => setTop3Values({...top3Values, [e.target.name]: {...top3Values[e.target.name], id: e.target.value}})
     const handleCommentChange = e => setTop3Values({...top3Values, [e.target.name]: {...top3Values[e.target.name], comment: e.target.value}})
+
+    const saveTop3 = () => {
+       let value1 = state.userValues.filter(v => v.value_id === Number(top3Values.value1.id))[0]
+       value1.top3 = true
+       value1.comment = top3Values.value1.comment
+        dispatch(updateValue(value1))
+       let value2 = state.userValues.filter(v => v.value_id === Number(top3Values.value2.id))[0]
+       value2.top3 = true
+       value2.comment = top3Values.value2.comment
+        dispatch(updateValue(value2))
+       let value3 = state.userValues.filter(v => v.value_id === Number(top3Values.value3.id))[0]
+       value3.top3 = true
+       value3.comment = top3Values.value3.comment
+        dispatch(updateValue(value3))
+    }
     return (
         <div>
             {console.log(top3Values)}
@@ -42,6 +58,7 @@ const Top3 = () => {
                 </select>
                 <textarea name="value3" value={top3Values.value3.comment} onChange={e => handleCommentChange(e)}/>
             </div>
+            <button onClick={() => saveTop3()}>Save</button>
         </div>
     )
 }

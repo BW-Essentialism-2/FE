@@ -23,6 +23,7 @@ const AllValues = () => {
     const importantValues = state.userValues.filter(v => v.important === true)
     return (
         <div>
+            {console.log(state.userValues)}
             <select value={value} onChange={e => setValue(e.target.value)}>
                 {state.userValues.map(value => {
                     return <option key={value.value_id} value={value.value_id}>{value.value}</option>
