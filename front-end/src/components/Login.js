@@ -10,8 +10,8 @@ const Login = (props) => {
 
   const handleChanges = e => {
     setUser({
-        ...user,
-        [e.target.name]: e.target.value
+      ...user,
+      [e.target.name]: e.target.value
     });
   };
 
@@ -24,8 +24,8 @@ const Login = (props) => {
         props.history.push('/protected');
       })
       .catch(err => {
-        localStorage.removeItem("token");
-        console.log("Invalid login: ", err);
+        localStorage.removeItem('token');
+        console.log('Invalid login: ', err);
       });
   };
 
