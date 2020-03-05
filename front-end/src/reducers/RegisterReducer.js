@@ -1,7 +1,7 @@
 
 import {
     FETCH_USER_VALUES_FAIL, FETCH_USER_VALUES_SUCCESS, FETCH_USER_VALUES_START,
-    TOGGLE_IMPORTANT_VALUES_START, TOGGLE_IMPORTANT_VALUES_SUCCESS, TOGGLE_IMPORTANT_VALUES_FAIL
+    UPDATE_VALUES_START, UPDATE_VALUES_SUCCESS, UPDATE_VALUES_FAIL
 } from '../actions/Register'
 const initialState =  {
         userValues: [],
@@ -31,12 +31,12 @@ export const registerReducer = (state = initialState, action) => {
                 isSending: false,
                 error: action.payload
             }
-        case TOGGLE_IMPORTANT_VALUES_START:
+        case UPDATE_VALUES_START:
             return {
                 ...state,
                 isUpdating: true
             }
-        case TOGGLE_IMPORTANT_VALUES_SUCCESS:
+        case UPDATE_VALUES_SUCCESS:
             let newValues = state.userValues.map(value => {
                 if(value.value_id === action.payload.value_id) {
                     return value = action.payload
@@ -48,7 +48,7 @@ export const registerReducer = (state = initialState, action) => {
                 isUpdating: false,
                 userValues: newValues
             }
-        case TOGGLE_IMPORTANT_VALUES_FAIL:
+        case UPDATE_VALUES_FAIL:
             return {
                 ...state,
                 isUpdating: false,

@@ -20,37 +20,20 @@ export const FetchValues = () => dispatch => {
         })
 }
 
-//ACTIONS TO TOGGLE IMPORTANT VALUES
-export const TOGGLE_IMPORTANT_VALUES_START = "TOGGLE_IMPORTANT_VALUES_START"
-export const TOGGLE_IMPORTANT_VALUES_SUCCESS = "TOGGLE_IMPORTANT_VALUES_SUCCESS"
-export const TOGGLE_IMPORTANT_VALUES_FAIL = "TOGGLE_IMPORTANT_VALUES_FAIL"
+//ACTIONS TO UPDATE VALUES
+export const UPDATE_VALUES_START = "UPDATE_VALUES_START"
+export const UPDATE_VALUES_SUCCESS = "UPDATE_VALUES_SUCCESS"
+export const UPDATE_VALUES_FAIL = "UPDATE_VALUES_FAIL"
 
-//UPDATE VALUE TO BE IMPORTANT
+//UPDATE VALUE
 export const updateValue = (value) => dispatch => {
     const user_id = localStorage.getItem('user_id')
-    dispatch({type: TOGGLE_IMPORTANT_VALUES_START})
+    dispatch({type: UPDATE_VALUES_START})
     axiosWithAuth().put(`/api/user/${user_id}/values`, value)
         .then(res => {
-            dispatch({ type: TOGGLE_IMPORTANT_VALUES_SUCCESS, payload: res.data })
+            dispatch({ type: UPDATE_VALUES_SUCCESS, payload: res.data })
         })
         .catch(err => {
-            dispatch({ type: TOGGLE_IMPORTANT_VALUES_FAIL, payload: err })
-        })
-}
-
-//TOGGLE TOP3 VALUES
-export const TOGGLE_TOP3_VALUES_START = "TOGGLE_TOP3_VALUES_START"
-export const TOGGLE_TOP3_VALUES_SUCCESS = "TOGGLE_TOP3_VALUES_SUCCESS"
-export const TOGGLE_TOP3_VALUES_FAIL = "TOGGLE_TOP3_VALUES_FAIL"
-
-export const updateTop3 = (value) => dispatch => {
-    const user_id = localStorage.getItem('user_id')
-    dispatch({type: TOGGLE_TOP3_VALUES_START})
-    axiosWithAuth().put(`/api/user/${user_id}/values`, value)
-        .then(res => {
-            dispatch({ type: TOGGLE_TOP3_VALUES_SUCCESS, payload: res.data })
-        })
-        .catch(err => {
-            dispatch({ type: TOGGLE_TOP3_VALUES_FAIL, payload: err })
+            dispatch({ type: UPDATE_VALUES_FAIL, payload: err })
         })
 }
