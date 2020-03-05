@@ -1,34 +1,57 @@
 
 import {
-    FETCH_ALL_VALUES_FAIL, FETCH_ALL_VALUES_SUCCESS, FETCH_ALL_VALUES_START
+    FETCH_USER_VALUES_FAIL, FETCH_USER_VALUES_SUCCESS, FETCH_USER_VALUES_START,
+    TOGGLE_IMPORTANT_VALUES_START, TOGGLE_IMPORTANT_VALUES_SUCCESS, TOGGLE_IMPORTANT_VALUES_FAIL
 } from '../actions/Register'
 const initialState =  {
-        allValues: [],
-        importantValues: [],
-        top3: [],
-        isFetching: false,
+        userValues: [],
+        isSending: false,
+        isUpdating: false,
         error: ""
     }
 
 export const registerReducer = (state = initialState, action) => {
     switch(action.type) {
-        case FETCH_ALL_VALUES_START:
+        case FETCH_USER_VALUES_START:
             return {
                 ...state,
-                isFetching: true,
+                isSending: true,
                 error: ""
             }
-        case FETCH_ALL_VALUES_SUCCESS:
+        case FETCH_USER_VALUES_SUCCESS:
             return {
                 ...state,
-                allValues: action.payload,
-                isFetching: false,
+                userValues: action.payload,
+                isSending: false,
                 error: ""
             }
-        case FETCH_ALL_VALUES_FAIL:
+        case FETCH_USER_VALUES_FAIL:
             return {
                 ...state,
-                isFetching: false,
+                isSending: false,
+                error: action.payload
+            }
+        case TOGGLE_IMPORTANT_VALUES_START:
+            return {
+                ...state,
+                isUpdating: true
+            }
+        case TOGGLE_IMPORTANT_VALUES_SUCCESS:
+            let newValues = state.userValues.map(value => {
+                if(value.value_id === action.payload.value_id) {
+                    return value = action.payload
+                }
+                return value
+            })
+            return {
+                ...state,
+                isUpdating: false,
+                userValues: newValues
+            }
+        case TOGGLE_IMPORTANT_VALUES_FAIL:
+            return {
+                ...state,
+                isUpdating: false,
                 error: action.payload
             }
         default:
