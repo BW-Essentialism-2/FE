@@ -19,10 +19,10 @@ const Dashboard = props => {
             ))}
         </div>
         <div className="projects">
-            {props.userData.map(data => (
+            {props.userData.map(project => (
               <ProjectCard 
-                key={data.id} 
-                data={data} />
+                key={project.id} 
+                project={project} />
             ))}
         </div>
       </div>
