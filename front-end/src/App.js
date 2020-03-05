@@ -1,11 +1,12 @@
 import React, { useState,  } from 'react';
 import './App.css';
 import NavBar from './components/NavBar';
-import {Route} from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Register from './components/Register';
 import Login from './components/Login';
 import AllValues from './components/AllValues';
-import Dashboard from './components/Dashboard';
+import Top3Form from './components/Top3Form';
+import Dashboard from './components/dashboard/Dashboard';
 import PrivateRoute from './utils/PrivateRoute';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <Route exact path="/login" render={() => <Login />} />
 
       <PrivateRoute path = "/register/values" component={AllValues}/>
+      <PrivateRoute path = "/register/top3" component={Top3Form}/>
       <PrivateRoute path = "/user/:id/dashboard" component={Dashboard}/>
 
     </div>
