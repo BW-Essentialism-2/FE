@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { useHistory } from 'react-router-dom'
 
-const Login = (props) => {
-
+const Login = ({setToken}) => {
+  const history = useHistory()
   const [user, setUser] = useState({
     username: '',
     password: ''
@@ -21,7 +22,8 @@ const Login = (props) => {
       .post("/api/auth/login", user)
       .then(res => {
         localStorage.setItem('token', res.data.payload);
-        props.history.push('/protected');
+        setToken(true)
+        history.push('/protected');
       })
       .catch(err => {
         localStorage.removeItem('token');
