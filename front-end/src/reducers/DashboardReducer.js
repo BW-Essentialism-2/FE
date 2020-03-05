@@ -1,9 +1,6 @@
 import { FETCH_DATA, 
         DATA_SUCCESS, 
-        DATA_FAILURE, 
-        FETCH_PROJECTS, 
-        PROJECTS_SUCCESS, 
-        PROJECTS_FAILURE } from '../actions/Dashboard';
+        DATA_FAILURE } from '../actions/Dashboard';
 
 const initialState = {
   allValues: [],
@@ -29,26 +26,6 @@ const DashboardReducer = (state = initialState, action) => {
         smurfData: action.payload
       };
     case DATA_FAILURE:
-      return {
-        ...state,
-        error: action.payload,
-        isFetching: false
-      };
-      
-    case FETCH_PROJECTS:
-      return {
-        ...state,
-        isFetching: true,
-        error: ''
-      };
-    case PROJECTS_SUCCESS:
-      return {
-        ...state,
-        isFetching: false,
-        error: '',
-        smurfData: action.payload
-      };
-    case PROJECTS_FAILURE:
       return {
         ...state,
         error: action.payload,

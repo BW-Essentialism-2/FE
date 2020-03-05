@@ -6,32 +6,41 @@ const initialProject = {
   project: ''
 };
 
-const ValueCard = ({ project_id, project }) => {
+const ProjectsList = ({ project_id, project }) => {
   console.log(project);
   const [editing, setEditing] = useState(false);
-  const [valueToEdit, setValueToEdit] = useState(initialProject);
+  const [projectToEdit, setProjectToEdit] = useState(initialProject);
   const [newProject, setNewProject] = useState(initialProject)
 
   const editProject = project => {
     setEditing(true);
-    setValueToEdit(project);
+    setProjectToEdit(project);
   };
 
   const saveEdit = e => {
     e.preventDefault();
     axiosWithAuth()
-      .put(`/api/user/:id/values/${value_id}`, valueToEdit)
+      .put(`/api/user/:id/projects/${project_id}`, projectToEdit)
       .then(res => {
         console.log('Project saved: ', res);
       })
       .catch(err => console.log('saveEdit FAILED:', err))
   };
 
+  const deleteProject = project_id => {
+    axiosWithAuth()
+      .delete(`/api/user/:id/projects/${project_id}`)
+      .then(res => {
+        console.log('Project deleted: ', res)
+      })
+      .catch(err => console.log('deleteProject FAILED:', err))
+  }
+
   const addProject = e => {
     e.preventDefault();
     setNewProject({ ...newProject });
     axiosWithAuth()
-      .post("/api/user/:id/values", newProject)
+      .post("/api/user/:id/projects", newProject)
       .then(res => {
         setNewProject(initialProject)
         console.log('Project added: ', res)
@@ -40,17 +49,21 @@ const ValueCard = ({ project_id, project }) => {
   }
 
   return (
-    <div className="value-card">
-      
-    <div className="edit">
-      <a href="https://essentialism-be-api.herokuapp.com/">
-        <i class="fas fa-pen"></i>
-      </a>
-    </div>
+    <div className="projects">
       <p>GOALS</p>
       <ul>
         {project.map(project => (
           <li key={project_id} onClick={() => editProject(project)}>
+            <span>
+              <span className="delete" onClick={e => {
+                    e.stopPropagation();
+                    deleteProject(project_id)
+                  }
+                }>
+                  x
+              </span>{" "}
+              {project}
+            </span>
           </li>
         ))}
       </ul>
@@ -58,9 +71,9 @@ const ValueCard = ({ project_id, project }) => {
         <form onSubmit={saveEdit}>
             <input
               onChange={e =>
-                setValueToEdit({ ...valueToEdit, color: e.target.value })
+                setProjectToEdit({ ...projectToEdit, color: e.target.value })
               }
-              value={valueToEdit.value}
+              value={projectToEdit.color}
             />
           <div className="button-row">
             <button type="submit">SAVE</button>
@@ -75,4 +88,4 @@ const ValueCard = ({ project_id, project }) => {
   );
 };
 
-export default ValueCard;
+export default ProjectsList;
