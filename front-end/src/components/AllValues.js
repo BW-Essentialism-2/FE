@@ -13,7 +13,7 @@ const AllValues = () => {
     }, [dispatch])
 
     const toggleImportant = (id) => {
-       let newValue = state.allValues.filter(v => {
+       let newValue = state.userValues.filter(v => {
             return v.value_id === Number(id)
        })[0]
        newValue.important = !newValue.important
@@ -21,13 +21,14 @@ const AllValues = () => {
     }
     return (
         <div>
-            {console.log(state.allValues)}
             <select value={value} onChange={e => setValue(e.target.value)}>
-                {state.allValues.map(value => {
+                {state.userValues.map(value => {
                     return <option key={value.value_id} value={value.value_id}>{value.value}</option>
                 })}
             </select>
             <button onClick={() => toggleImportant(value)}>Add as important</button>
+            <h2>Your Important Values</h2>
+            {state.userValues.map(v => v.important === true ? <h4 key={v.value_id} onClick={() => toggleImportant(v.value_id)}>{v.value}</h4> : null)}
         </div>
     )
 }
