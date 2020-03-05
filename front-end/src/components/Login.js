@@ -1,9 +1,7 @@
-import React, { useState, useReducer } from "react";
-
-// import { initialState, reducer } from "../reducers";
+import React, { useState } from "react";
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const Login = (props) => {
-  // const [state, dispatch] = useReducer(reducer, initialState);
 
   const [user, setUser] = useState({
     username: '',
@@ -12,8 +10,8 @@ const Login = (props) => {
 
   const handleChanges = e => {
     setUser({
-        ...user,
-        [e.target.name]: e.target.value
+      ...user,
+      [e.target.name]: e.target.value
     });
   };
 
@@ -26,10 +24,9 @@ const Login = (props) => {
         props.history.push('/protected');
       })
       .catch(err => {
-        localStorage.removeItem("token");
-        console.log("invalid login: ", err);
+        localStorage.removeItem('token');
+        console.log('Invalid login: ', err);
       });
-    // dispatch({ type: "LOGIN", payload:  });
   };
 
   return (
@@ -38,13 +35,13 @@ const Login = (props) => {
         <input 
           type="text"
           name="username"
-          value={username}
+          value={user.username}
           onChange={handleChanges}
         />
         <input 
           type="password"
           name="password"
-          value={password}
+          value={user.password}
           onChange={handleChanges}
         />
         <button>Log In</button>
