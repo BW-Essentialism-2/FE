@@ -26,7 +26,7 @@ const NavBar = ({token, setToken}) => {
                 <div className="links">
                     <Link to="/about">About</Link>
                     <Link to="/register">Register</Link>
-                    {isUser === false ? <Link>Log In</Link> : <Link onClick={e => logOut()}>Log Out</Link> }
+                    {isUser === false ? <Link to="/login">Log In</Link> : <Link onClick={e => logOut()}>Log Out</Link> }
                 </div>
             </nav>
         </div>
