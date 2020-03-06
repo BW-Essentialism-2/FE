@@ -25,7 +25,7 @@ function App() {
       <PrivateRoute path="/register/goals" component={CurrentGoals}/>
       <PrivateRoute path = "/register/values" component={AllValues}/>
       <PrivateRoute path = "/register/top3" component={Top3Form}/>
-      <PrivateRoute path = "/user/:id/dashboard" component={Dashboard}/>
+      <PrivateRoute path = "/protected" component={Dashboard}/>
 
     </div>
   );
