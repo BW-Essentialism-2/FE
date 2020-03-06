@@ -3,7 +3,8 @@ import {
     FETCH_USER_VALUES_FAIL, FETCH_USER_VALUES_SUCCESS, FETCH_USER_VALUES_START,
     UPDATE_VALUES_START, UPDATE_VALUES_SUCCESS, UPDATE_VALUES_FAIL,
     FETCH_GOALS_START, FETCH_GOALS_SUCCESS, FETCH_GOALS_FAIL,
-    ADD_GOAL_START, ADD_GOAL_SUCCESS, ADD_GOAL_FAIL
+    ADD_GOAL_START, ADD_GOAL_SUCCESS, ADD_GOAL_FAIL,
+    DELETE_GOAL_START, DELETE_GOAL_SUCCESS, DELETE_GOAL_FAIL
 } from '../actions/Register'
 const initialState =  {
         userValues: [],
@@ -91,6 +92,24 @@ export const registerReducer = (state = initialState, action) => {
                 isUpdating: false,
                 error: action.payload
             }
+        case DELETE_GOAL_START:
+            return {
+                ...state,
+                isUpdating: true
+            }
+        case DELETE_GOAL_SUCCESS:
+            return {
+                ...state,
+                currentGoals: state.currentGoals.filter(goal => goal.project_id !== action.payload),
+                isUpdating: false
+            }
+        case DELETE_GOAL_FAIL:
+            return {
+                ...state,
+                isUpdating: false,
+                error: action.payload
+            }
+
         default:
             return initialState
     }

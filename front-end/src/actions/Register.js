@@ -89,3 +89,18 @@ export const updateGoal = (goal) => dispatch => {
             dispatch({ type: UPDATE_GOAL_FAIL, payload: err })
         })
 }
+
+//DELETE GOAL
+export const DELETE_GOAL_START = "DELETE_GOAL_START"
+export const DELETE_GOAL_SUCCESS = "DELETE_GOAL_SUCCESS"
+export const DELETE_GOAL_FAIL = "DELETE_GOAL_FAIL"
+
+export const deleteGoal = (id) => dispatch => {
+    // const user_id = localStorage.getItem('user_id')
+    dispatch({ type: DELETE_GOAL_START })
+    axiosWithAuth().delete(`/api/user/projects/${id}`)
+        .then(dispatch({ type: DELETE_GOAL_SUCCESS, payload: id }))
+        .catch(err => {
+            dispatch({ type: DELETE_GOAL_FAIL, payload: err })
+        })
+}
