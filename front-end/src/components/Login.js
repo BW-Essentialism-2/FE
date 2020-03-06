@@ -36,17 +36,19 @@ const Login = ({setToken}) => {
       <form onSubmit={handleSubmit} >
         <input 
           type="text"
+          placeholder="USERNAME"
           name="username"
           value={user.username}
           onChange={handleChanges}
         />
         <input 
           type="password"
+          placeholder="PASSWORD"
           name="password"
           value={user.password}
           onChange={handleChanges}
         />
-        <button>Log In</button>
+        <button>LOG IN</button>
       </form>
     </div>
   );
