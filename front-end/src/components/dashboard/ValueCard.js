@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axiosWithAuth from '../utils/axiosWithAuth';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
 const initialProject = {
   project_id: '',
@@ -20,7 +20,7 @@ const ValueCard = ({ project_id, project }) => {
   const saveEdit = e => {
     e.preventDefault();
     axiosWithAuth()
-      .put(`/api/user/:id/values/${value_id}`, valueToEdit)
+      .put(`/api/user/:id/values/${valueToEdit.value_id}`, valueToEdit)
       .then(res => {
         console.log('Project saved: ', res);
       })
