@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { axiosWithAuth } from '../utils/axiosWithAuth'
 import { updateValue } from '../actions/Register'
+import { useHistory } from 'react-router-dom'
 const Top3 = () => {
     const dispatch = useDispatch()
     const state = useSelector(state => state.register)
     const importantValue = state.userValues.filter(v => v.important === true)
+
+    const history = useHistory()
 
     const [top3Values, setTop3Values] = useState({
         value1: {id: importantValue[0].value_id || 0, comment: ""},
@@ -29,6 +31,7 @@ const Top3 = () => {
        value3.top3 = true
        value3.comment = top3Values.value3.comment
         dispatch(updateValue(value3))
+        history.push('/register/goals')
     }
     return (
         <div>

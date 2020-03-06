@@ -37,3 +37,55 @@ export const updateValue = (value) => dispatch => {
             dispatch({ type: UPDATE_VALUES_FAIL, payload: err })
         })
 }
+
+
+//FETCH USERS GOALS
+export const FETCH_GOALS_START = "FETCH_GOALS_START"
+export const FETCH_GOALS_SUCCESS = "FETCH_GOALS_SUCCESS"
+export const FETCH_GOALS_FAIL = "FETCH_GOALS_FAIL"
+
+export const fetchGoals = () => dispatch => {
+    const user_id = localStorage.getItem('user_id')
+    dispatch({type: FETCH_GOALS_START})
+    axiosWithAuth().get(`/api/user/${user_id}/projects`)
+        .then(res => {
+            dispatch({ type: FETCH_GOALS_SUCCESS, payload: res.data })
+        })
+        .catch(err => {
+            dispatch({ type: FETCH_GOALS_FAIL, payload: err })
+        })
+}
+
+//ADD GOAL TO USER
+export const ADD_GOAL_START = "ADD_GOAL_START"
+export const ADD_GOAL_SUCCESS = "ADD_GOAL_SUCCESS"
+export const ADD_GOAL_FAIL = "ADD_GOAL_FAIL"
+
+export const addGoal = (goal) => dispatch => {
+    const user_id = localStorage.getItem('user_id')
+    dispatch({ type: ADD_GOAL_START })
+    axiosWithAuth().post(`/api/user/${user_id}/projects`, goal)
+        .then(res => {
+            dispatch({ type: ADD_GOAL_SUCCESS, payload: res.data })
+        })
+        .catch(err => {
+            dispatch({ type: ADD_GOAL_FAIL, payload: err })
+        })
+}
+
+//UPDATE GOAL TO USER
+export const UPDATE_GOAL_START = "UPDATE_GOAL_START"
+export const UPDATE_GOAL_SUCCESS = "UPDATE_GOAL_SUCCESS"
+export const UPDATE_GOAL_FAIL = "UPDATE_GOAL_FAIL"
+
+export const updateGoal = (goal) => dispatch => {
+    const user_id = localStorage.getItem('user_id')
+    dispatch({ type: UPDATE_GOAL_START })
+    axiosWithAuth().put(`/api/user/${user_id}/projects`, goal)
+        .then(res => {
+            dispatch({ type: UPDATE_GOAL_SUCCESS, payload: res.data })
+        })
+        .catch(err => {
+            dispatch({ type: UPDATE_GOAL_FAIL, payload: err })
+        })
+}
