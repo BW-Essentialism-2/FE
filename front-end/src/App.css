@@ -37,6 +37,26 @@
   }
 }
 
+h1 h2 h3 p a span {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: 40rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 20rem;
+  font-weight: 600;
+}
+p span {
+  font-size: 20rem;
+  font-weight: 400;
+}
+
 .nav {
   margin: 2%;
 }
@@ -89,4 +109,24 @@
 
 .edit a {
 	color: #3d3d3d;
+}
+
+h1 h2 h3 p a span {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: 40rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 20rem;
+  font-weight: 600;
+}
+p span a {
+  font-size: 20rem;
+  font-weight: 400;
 }
