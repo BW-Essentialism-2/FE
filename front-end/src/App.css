@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
 }
 
 .App-logo {
@@ -37,26 +40,6 @@
   }
 }
 
-h1 h2 h3 p a span {
-  font-family: 'Montserrat', sans-serif;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-
-h1 {
-  font-size: 40rem;
-  font-weight: 700;
-}
-
-h2 {
-  font-size: 20rem;
-  font-weight: 600;
-}
-p span {
-  font-size: 20rem;
-  font-weight: 400;
-}
-
 .nav {
   margin: 2%;
 }
@@ -82,11 +65,11 @@ p span {
   height: 100%;
 }
 .links a {
-  height: 20px;
+  font-size: 1rem;
+  font-weight: 600;
   color: black;
   align-self: center;
   text-decoration: none;
-  font-weight: 500;
 }
 
 .value-card {
@@ -111,22 +94,25 @@ p span {
 	color: #3d3d3d;
 }
 
-h1 h2 h3 p a span {
+input button {
   font-family: 'Montserrat', sans-serif;
-  letter-spacing: .1em;
+  letter-spacing: .1rem;
   text-transform: uppercase;
 }
 
-h1 {
-  font-size: 40rem;
+h2 {
+  font-size: 2rem;
   font-weight: 700;
+  letter-spacing: .2rem;
+
 }
 
-h2 {
-  font-size: 20rem;
+h3 {
+  font-size: 1rem;
   font-weight: 600;
 }
+
 p span a {
-  font-size: 20rem;
+  font-size: 1rem;
   font-weight: 400;
 }
