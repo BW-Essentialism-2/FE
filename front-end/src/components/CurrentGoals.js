@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { addGoal, fetchGoals, FetchValues, deleteGoal } from '../actions/Register'
 
 const CurrentGoals = () => {
@@ -38,6 +39,9 @@ const CurrentGoals = () => {
                             <h3>{goal.project}</h3>
                         </div>
             })}
+            <Link to="/protected">
+              <button>All Set</button>
+            </Link>
         </div>
     )
 }

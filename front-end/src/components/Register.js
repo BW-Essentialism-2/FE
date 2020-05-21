@@ -29,8 +29,8 @@ const Register = ({setToken}) => {
         <div>
             <form onSubmit={e => HandleSubmit(e)}>
                 {console.log(setToken)}
-                <input name="username" placeholder="Username" value={credentials.username} onChange={e => handleChanges(e)}/>
-                <input type="password" name="password" placeholder="Password" value={credentials.password} onChange={e => handleChanges(e)}/>
+                <input name="username" placeholder="USERNAME" value={credentials.username} onChange={e => handleChanges(e)}/>
+                <input type="password" name="password" placeholder="PASSWORD" value={credentials.password} onChange={e => handleChanges(e)}/>
                 <button type="submit">Register</button>
             </form>
         </div>

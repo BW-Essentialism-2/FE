@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
 }
 
 .App-logo {
@@ -62,11 +65,11 @@
   height: 100%;
 }
 .links a {
-  height: 20px;
+  font-size: 1rem;
+  font-weight: 600;
   color: black;
   align-self: center;
   text-decoration: none;
-  font-weight: 500;
 }
 
 .value-card {
@@ -89,4 +92,27 @@
 
 .edit a {
 	color: #3d3d3d;
+}
+
+input button {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: .2rem;
+
+}
+
+h3 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+p span a {
+  font-size: 1rem;
+  font-weight: 400;
 }
